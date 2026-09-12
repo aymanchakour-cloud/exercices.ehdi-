@@ -1,9 +1,9 @@
 {
-  "name":"Révision Français — Famille et École",
-  "short_name":"Révision Français",
-  "start_url":"./index.html",
-  "display":"standalone",
-  "background_color":"#eef5fb",
-  "theme_color":"#1769aa",
-  "icons":[]
+  "name": "Français • Famille & École",
+  "short_name": "Français",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f3f7fb",
+  "theme_color": "#1769aa",
+  "icons": []
 }

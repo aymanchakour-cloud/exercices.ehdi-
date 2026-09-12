@@ -1,3 +1,4 @@
-SITE DE REVISION FRANCAIS
-Ouvre index.html dans un navigateur.
-Pour GitHub Pages : mets index.html et manifest.json à la racine du dépôt.
+APPLICATION FRANCAIS — VERSION JEU
+Accueil, vocabulaire illustré, exercices, test final, XP/niveaux et mode jeu.
+Mode jeu : 10 manches, 3 vies, 15 secondes par question et points.
+Compatible avec GitHub Pages.

@@ -2,173 +2,247 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#1769aa">
-<title>Révision Français — La famille et l'école</title>
-<link rel="manifest" href="manifest.json">
+<title>Français • Famille & École</title>
 <style>
-*{box-sizing:border-box}
-body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#eef5fb;color:#17202a}
-header{background:linear-gradient(135deg,#1769aa,#2b8ac6);color:#fff;padding:26px 18px;text-align:center}
-header h1{margin:0 0 8px;font-size:25px}
-header p{margin:0;opacity:.95}
-.container{max-width:900px;margin:auto;padding:18px}
-.card{background:#fff;border-radius:18px;padding:20px;margin:16px 0;box-shadow:0 5px 18px #00000012}
-h2{margin-top:0;color:#1769aa}
-.progress{height:10px;background:#dce8f2;border-radius:99px;overflow:hidden;margin:10px 0 18px}
-.progress div{height:100%;width:0;background:#20a36a;transition:.25s}
-label{display:block;margin:10px 0}
-input[type=text],select{width:100%;padding:12px;border:1px solid #c9d6e0;border-radius:10px;font-size:16px}
-.option{padding:12px;border:1px solid #d5e0e8;border-radius:12px;margin:8px 0;cursor:pointer}
-.option:hover{background:#f2f8fc}
-button{border:0;border-radius:12px;padding:12px 17px;background:#1769aa;color:white;font-size:16px;cursor:pointer;margin:5px}
-button.secondary{background:#5d6d7e}
-button.green{background:#20a36a}
-.result{padding:12px;border-radius:12px;margin-top:12px;font-weight:bold}
-.good{background:#e7f7ef;color:#146b43}
-.bad{background:#fff0f0;color:#a72b2b}
-.small{font-size:14px;color:#61717f}
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.word{background:#f6f9fb;padding:13px;border-radius:12px}
-@media(max-width:650px){.grid{grid-template-columns:1fr} header h1{font-size:21px}}
-footer{text-align:center;padding:25px;color:#71808c;font-size:13px}
+:root{--blue:#1769aa;--blue2:#2f8dca;--green:#19a66a;--bg:#f3f7fb;--text:#17212b;--muted:#6c7a86;--card:#fff;--line:#e1e8ee;--danger:#d9534f}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:Inter,Arial,sans-serif;color:var(--text)}
+button,input,select{font:inherit}button{border:0;cursor:pointer}
+.app{max-width:520px;margin:auto;min-height:100vh;background:var(--bg);padding-bottom:88px}
+.top{background:linear-gradient(145deg,var(--blue),var(--blue2));color:white;padding:25px 20px 28px;border-radius:0 0 28px 28px}
+.topline{display:flex;justify-content:space-between;align-items:center}.logo{width:46px;height:46px;border-radius:14px;background:#fff;color:var(--blue);display:grid;place-items:center;font-weight:900;font-size:18px;box-shadow:0 5px 15px #0002}.hello{font-size:14px;opacity:.9}.top h1{margin:5px 0 4px;font-size:27px}.top p{margin:0;opacity:.9}
+.content{padding:16px}.screen{display:none}.screen.active{display:block}.card{background:var(--card);border-radius:20px;padding:18px;margin:12px 0;box-shadow:0 5px 20px #17324d0d;border:1px solid #edf1f4}
+.hero{margin-top:-4px}.hero h2{margin:0 0 5px}.hero p{margin:0;color:var(--muted);line-height:1.45}
+.section-title{display:flex;justify-content:space-between;align-items:center;margin:22px 2px 10px}.section-title h3{margin:0;font-size:18px}.section-title span{color:var(--blue);font-size:13px;font-weight:bold}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:11px}.tile{background:white;border:1px solid var(--line);border-radius:18px;padding:17px;text-align:left;min-height:118px}.tile .ico{font-size:28px}.tile b{display:block;margin-top:10px}.tile small{color:var(--muted)}
+.primary{width:100%;padding:14px;border-radius:13px;background:var(--blue);color:#fff;font-weight:700;margin-top:12px}.green{background:var(--green)}
+.progress{height:9px;background:#e3ebf2;border-radius:99px;overflow:hidden}.progress i{display:block;height:100%;width:0;background:var(--green);transition:.3s}
+.stats{display:flex;gap:10px}.stat{flex:1;background:white;border-radius:16px;padding:14px;text-align:center;border:1px solid var(--line)}.stat strong{font-size:23px;color:var(--blue);display:block}.stat small{color:var(--muted)}
+.word{display:flex;justify-content:space-between;gap:12px;padding:13px 0;border-bottom:1px solid var(--line)}.word:last-child{border-bottom:0}.word b{font-size:16px}.word span{color:var(--blue);font-weight:700;text-align:right}
+.q{margin:15px 0}.q-title{font-weight:700;margin-bottom:9px}.choice{display:block;padding:13px;border:1px solid var(--line);border-radius:12px;margin:7px 0;background:#fff}.choice input{margin-right:8px}
+input[type=text],select{width:100%;padding:13px;border:1px solid #cfdbe4;border-radius:12px;background:#fff}
+.feedback{margin-top:10px;padding:12px;border-radius:12px;display:none}.good{display:block;background:#e7f7ef;color:#146b43}.bad{display:block;background:#fff0f0;color:#a72b2b}
+.score-circle{width:150px;height:150px;border-radius:50%;margin:10px auto 18px;background:linear-gradient(145deg,#e8f6ff,#fff);border:10px solid #d9edf9;display:grid;place-items:center;text-align:center}.score-circle strong{display:block;font-size:34px;color:var(--blue)}.score-circle span{font-size:13px;color:var(--muted)}
+.bottom{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(520px,100%);height:76px;background:#fff;border-top:1px solid var(--line);display:flex;justify-content:space-around;align-items:center;z-index:5;padding-bottom:env(safe-area-inset-bottom)}.nav{background:none;color:#7b8791;font-size:11px;text-align:center;padding:8px}.nav .nicon{display:block;font-size:22px;margin-bottom:3px}.nav.active{color:var(--blue);font-weight:800}
+.back{background:none;color:var(--blue);font-weight:700;padding:0;margin-bottom:8px}.badge{display:inline-block;padding:5px 9px;border-radius:99px;background:#eaf5fc;color:var(--blue);font-size:12px;font-weight:bold}
+.listbutton{width:100%;text-align:left;background:#fff;border:1px solid var(--line);border-radius:16px;padding:15px;margin:6px 0}.listbutton b{display:block}.listbutton small{color:var(--muted)}
+footer{text-align:center;color:#8997a2;font-size:12px;padding:18px}
+.lives{font-size:22px;letter-spacing:2px}.game-card{background:linear-gradient(145deg,#fff,#f4fbff);border:1px solid #dcecf7}.game-word{font-size:30px;font-weight:900;color:var(--blue);text-align:center;margin:12px 0}.game-prompt{text-align:center;color:var(--muted)}.game-options{display:grid;grid-template-columns:1fr 1fr;gap:10px}.game-opt{padding:15px;border-radius:14px;background:#fff;border:2px solid var(--line);font-weight:700}.game-opt:active{transform:scale(.97)}.game-opt.correct{border-color:#19a66a;background:#e7f7ef}.game-opt.wrong{border-color:#d9534f;background:#fff0f0}.illustrations{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.illus{background:#f7fafc;border-radius:16px;padding:12px;text-align:center}.illus .pic{font-size:48px;display:block;margin-bottom:5px}.illus b{font-size:14px}
+
+@keyframes pop{0%{transform:scale(.94);opacity:.5}100%{transform:scale(1);opacity:1}}
+@keyframes slide{from{transform:translateY(12px);opacity:0}to{transform:translateY(0);opacity:1}}
+.screen.active{animation:slide .22s ease-out}
+.card,.tile,.listbutton{transition:transform .16s ease,box-shadow .16s ease}
+.tile:active,.listbutton:active{transform:scale(.98)}
+.level{display:flex;align-items:center;gap:12px;margin-top:14px}.level-badge{width:42px;height:42px;border-radius:14px;background:#fff;color:var(--blue);display:grid;place-items:center;font-size:21px;font-weight:900}.level-text{flex:1}.level-text b{display:block}.level-text small{opacity:.85}.xp{height:7px;background:#ffffff55;border-radius:99px;overflow:hidden;margin-top:5px}.xp i{display:block;height:100%;width:0;background:#fff;transition:.4s}
+.speak{background:#eaf5fc;color:var(--blue);padding:8px 10px;border-radius:10px;font-weight:700;font-size:13px}
+.vocab-actions{display:flex;justify-content:space-between;align-items:center;margin-bottom:5px}
 </style>
 </head>
 <body>
-<header>
-<h1>🇫🇷 Révision Français</h1>
-<p>La famille • L'école • La classe</p>
+<div class="app">
+<header class="top">
+  <div class="topline"><div><div class="hello">Révision interactive</div><h1>Français</h1><p>La famille & l'école</p></div><div class="logo">FR</div></div>
+<div class="level"><div class="level-badge" id="levelIcon">⭐</div><div class="level-text"><b id="levelName">Débutant</b><small id="xpText">0 XP</small><div class="xp"><i id="xpBar"></i></div></div></div>
 </header>
-<div class="container">
-<div class="card">
-<h2>👋 Commencer</h2>
-<label>Prénom
-<input id="prenom" type="text" placeholder="Écris ton prénom">
-</label>
-<p class="small">Fais les exercices dans l'ordre. Ton score se calcule automatiquement.</p>
-<div class="progress"><div id="bar"></div></div>
-</div>
 
-<section class="card">
-<h2>1. Traduction</h2>
-<p>Écris la traduction française.</p>
+<main class="content">
+<section id="home" class="screen active">
+  <div class="card hero">
+    <span class="badge">🎯 Objectif du jour</span>
+    <h2>Prêt à t'entraîner ?</h2>
+    <p>Apprends le vocabulaire, entraîne-toi avec les exercices puis passe le test.</p>
+    <button class="primary" onclick="openScreen('exercises')">Commencer les exercices →</button>
+  </div>
+  <div class="stats"><div class="stat"><strong id="homeScore">0%</strong><small>Score</small></div><div class="stat"><strong id="homeDone">0/4</strong><small>Exercices</small></div><div class="stat"><strong id="homeXP">0</strong><small>XP</small></div></div>
+  <div class="section-title"><h3>Choisis une activité</h3></div>
+  <div class="grid">
+    <button class="tile" onclick="openScreen('vocab')"><span class="ico">📚</span><b>Vocabulaire</b><small>Famille & classe</small></button>
+    <button class="tile" onclick="openScreen('exercises')"><span class="ico">✏️</span><b>Exercices</b><small>4 activités</small></button>
+    <button class="tile" onclick="openScreen('test')"><span class="ico">🏆</span><b>Test final</b><small>Teste tes connaissances</small></button>
+    <button class="tile" onclick="openScreen('game')"><span class="ico">❤️</span><b>Mode jeu</b><small>3 vies • points • chrono</small></button>
+    <button class="tile" onclick="openScreen('results')"><span class="ico">📊</span><b>Mes résultats</b><small>Voir ta progression</small></button>
+  </div>
+  <footer>Révision Français • Famille & École</footer>
+</section>
+
+<section id="vocab" class="screen">
+  <button class="back" onclick="openScreen('home')">← Accueil</button>
+  <div class="card"><span class="badge">📚 Fiche mémo</span><h2>La famille</h2>
+    <div class="word"><div><b>un père</b><span>een vader</span></div><button class="speak" onclick="speak('un père')">🔊 Écouter</button></div><div class="word"><div><b>une mère</b><span>een moeder</span></div><button class="speak" onclick="speak(\'une mère\')">🔊</button></div>
+    <div class="word"><div><b>un grand-père</b><span>een grootvader</span></div><button class="speak" onclick="speak(\'un grand-père\')">🔊</button></div><div class="word"><div><b>une grand-mère</b><span>een grootmoeder</span></div><button class="speak" onclick="speak(\'une grand-mère\')">🔊</button></div>
+    <div class="word"><div><b>un frère</b><span>een broer</span></div><button class="speak" onclick="speak(\'un frère\')">🔊</button></div><div class="word"><div><b>une sœur</b><span>een zus</span></div><button class="speak" onclick="speak(\'une sœur\')">🔊</button></div>
+    <div class="word"><div><b>un cousin</b><span>een neef</span></div><button class="speak" onclick="speak(\'un cousin\')">🔊</button></div><div class="word"><div><b>une cousine</b><span>een nicht</span></div><button class="speak" onclick="speak(\'une cousine\')">🔊</button></div>
+    <div class="word"><div><b>un fils</b><span>een zoon</span></div><button class="speak" onclick="speak(\'un fils\')">🔊</button></div><div class="word"><div><b>une fille</b><span>een dochter</span></div><button class="speak" onclick="speak(\'une fille\')">🔊</button></div>
+    <div class="word"><div><b>les enfants</b><span>de kinderen</span></div><button class="speak" onclick="speak(\'les enfants\')">🔊</button></div><div class="word"><div><b>les parents</b><span>de ouders</span></div><button class="speak" onclick="speak(\'les parents\')">🔊</button></div>
+    <div class="word"><div><b>un oncle</b><span>een oom</span></div><button class="speak" onclick="speak(\'un oncle\')">🔊</button></div><div class="word"><div><b>une tante</b><span>een tante</span></div><button class="speak" onclick="speak(\'une tante\')">🔊</button></div>
+    <div class="word"><div><b>un mari</b><span>een echtgenoot</span></div><button class="speak" onclick="speak(\'un mari\')">🔊</button></div><div class="word"><div><b>la femme</b><span>de vrouw</span></div><button class="speak" onclick="speak(\'la femme\')">🔊</button></div>
+  </div>
+  <div class="card"><h2>L'école et la classe</h2>
+    <div class="word"><div><b>un taille-crayon</b><span>een potloodslijper</span></div><button class="speak" onclick="speak(\'un taille-crayon\')">🔊</button></div><div class="word"><div><b>un crayon</b><span>een potlood</span></div><button class="speak" onclick="speak(\'un crayon\')">🔊</button></div>
+    <div class="word"><div><b>la colle</b><span>de lijm</span></div><button class="speak" onclick="speak(\'la colle\')">🔊</button></div><div class="word"><div><b>un stylo</b><span>een pen</span></div><button class="speak" onclick="speak(\'un stylo\')">🔊</button></div>
+    <div class="word"><div><b>un cahier</b><span>een schrift</span></div><button class="speak" onclick="speak(\'un cahier\')">🔊</button></div><div class="word"><div><b>un trombone</b><span>een paperclip</span></div><button class="speak" onclick="speak(\'un trombone\')">🔊</button></div>
+    <div class="word"><div><b>une règle</b><span>een lat</span></div><button class="speak" onclick="speak(\'une règle\')">🔊</button></div><div class="word"><div><b>une craie</b><span>een krijtje</span></div><button class="speak" onclick="speak(\'une craie\')">🔊</button></div>
+    <div class="word"><div><b>les ciseaux</b><span>de schaar</span></div><button class="speak" onclick="speak(\'les ciseaux\')">🔊</button></div><div class="word"><div><b>une calculatrice</b><span>een zakrekenmachine</span></div><button class="speak" onclick="speak(\'une calculatrice\')">🔊</button></div>
+    <div class="word"><div><b>une gomme</b><span>een gom</span></div><button class="speak" onclick="speak(\'une gomme\')">🔊</button></div><div class="word"><div><b>un tableau</b><span>een (school)bord</span></div><button class="speak" onclick="speak(\'un tableau\')">🔊</button></div>
+    <div class="word"><div><b>un pinceau</b><span>een penseel</span></div><button class="speak" onclick="speak(\'un pinceau\')">🔊</button></div><div class="word"><div><b>un ordinateur</b><span>een computer</span></div><button class="speak" onclick="speak(\'un ordinateur\')">🔊</button></div>
+    <div class="word"><div><b>un cartable</b><span>een boekentas</span></div><button class="speak" onclick="speak(\'un cartable\')">🔊</button></div><div class="word"><div><b>une agrafeuse</b><span>een nietmachine</span></div><button class="speak" onclick="speak(\'une agrafeuse\')">🔊</button></div>
+    <div class="word"><div><b>le globe</b><span>de wereldbol</span></div><button class="speak" onclick="speak(\'le globe\')">🔊</button></div><div class="word"><div><b>la trousse</b><span>de pennenzak</span></div><button class="speak" onclick="speak(\'la trousse\')">🔊</button></div>
+  </div>
+</section>
+
+<section id="exercises" class="screen">
+<button class="back" onclick="openScreen('home')">← Accueil</button>
+<div class="card"><h2>✏️ Exercices</h2><p class="small">Termine chaque activité et vérifie tes réponses.</p><div class="progress"><i id="exProgress"></i></div></div>
+<div class="listbutton" onclick="document.getElementById('e1').scrollIntoView({behavior:'smooth'})"><b>1. Traduction</b><small>Néerlandais → français</small></div>
+<div class="listbutton" onclick="document.getElementById('e2').scrollIntoView({behavior:'smooth'})"><b>2. Bonne réponse</b><small>Vocabulaire de la famille</small></div>
+<div class="listbutton" onclick="document.getElementById('e3').scrollIntoView({behavior:'smooth'})"><b>3. Arbre familial</b><small>Relations de famille</small></div>
+<div class="listbutton" onclick="document.getElementById('e4').scrollIntoView({behavior:'smooth'})"><b>4. Objets de l'école</b><small>Vocabulaire de la classe</small></div>
+
+<div id="e1" class="card"><span class="badge">Exercice 1</span><h2>Traduction</h2>
+<p>Écris le mot français.</p><div class="grid">
+<label>een zus<input class="t" data-a="une sœur"></label><label>een grootmoeder<input class="t" data-a="une grand-mère"></label>
+<label>de ouders<input class="t" data-a="les parents"></label><label>een broer<input class="t" data-a="un frère"></label>
+<label>een zoon<input class="t" data-a="un fils"></label><label>de kinderen<input class="t" data-a="les enfants"></label>
+</div><button class="primary" onclick="checkText('e1')">Vérifier</button><div id="f1" class="feedback"></div></div>
+
+<div id="e2" class="card"><span class="badge">Exercice 2</span><h2>Choisis la bonne réponse</h2>
+<div class="q"><div class="q-title">een vader</div><label class="choice"><input type="radio" name="a1" value="une mère">une mère</label><label class="choice"><input type="radio" name="a1" value="un père">un père</label></div>
+<div class="q"><div class="q-title">een neef</div><label class="choice"><input type="radio" name="a2" value="un cousin">un cousin</label><label class="choice"><input type="radio" name="a2" value="une cousine">une cousine</label></div>
+<div class="q"><div class="q-title">een nicht</div><label class="choice"><input type="radio" name="a3" value="une cousine">une cousine</label><label class="choice"><input type="radio" name="a3" value="un cousin">un cousin</label></div>
+<div class="q"><div class="q-title">een echtgenoot</div><label class="choice"><input type="radio" name="a4" value="un mari">un mari</label><label class="choice"><input type="radio" name="a4" value="un père">un père</label></div>
+<div class="q"><div class="q-title">de vrouw</div><label class="choice"><input type="radio" name="a5" value="la mère">la mère</label><label class="choice"><input type="radio" name="a5" value="la femme">la femme</label></div>
+<div class="q"><div class="q-title">een grootvader</div><label class="choice"><input type="radio" name="a6" value="un grand-père">un grand-père</label><label class="choice"><input type="radio" name="a6" value="une grand-mère">une grand-mère</label></div>
+<div class="q"><div class="q-title">een dochter</div><label class="choice"><input type="radio" name="a7" value="un fils">un fils</label><label class="choice"><input type="radio" name="a7" value="une fille">une fille</label></div>
+<button class="primary" onclick="checkRadio()">Vérifier</button><div id="f2" class="feedback"></div></div>
+
+<div id="e3" class="card"><span class="badge">Exercice 3</span><h2>Arbre familial</h2><p>Complète avec le bon lien de famille.</p>
 <div class="grid">
-<label>een zus<input data-answer="une sœur" class="textans"></label>
-<label>een grootmoeder<input data-answer="une grand-mère" class="textans"></label>
-<label>de ouders<input data-answer="les parents" class="textans"></label>
-<label>een broer<input data-answer="un frère" class="textans"></label>
-<label>een zoon<input data-answer="un fils" class="textans"></label>
-<label>de kinderen<input data-answer="les enfants" class="textans"></label>
-</div>
-<button onclick="checkText(this)">Vérifier l'exercice 1</button>
-<div class="feedback"></div>
+<label>Ma ___ est Emma<select class="s" data-a="sœur"><option value="">Choisir</option><option>sœur</option><option>frère</option></select></label>
+<label>Ma ___ est Vera<select class="s" data-a="mère"><option value="">Choisir</option><option>mère</option><option>père</option></select></label>
+<label>Ma ___ est Lisa<select class="s" data-a="cousine"><option value="">Choisir</option><option>tante</option><option>cousine</option></select></label>
+<label>Mon ___ est Hendric<select class="s" data-a="grand-père"><option value="">Choisir</option><option>grand-père</option><option>père</option></select></label>
+<label>Ma ___ est Suzanne<select class="s" data-a="grand-mère"><option value="">Choisir</option><option>grand-mère</option><option>cousine</option></select></label>
+</div><button class="primary" onclick="checkSelect()">Vérifier</button><div id="f3" class="feedback"></div></div>
+
+<div id="e4" class="card"><span class="badge">Exercice 4</span><h2>Objets de l'école</h2><p>Écris le nom français.</p><div class="grid">
+<label>📓 Objet 1<input class="t4" data-a="un cahier"></label><label>🧽 Objet 2<input class="t4" data-a="une gomme"></label>
+<label>💻 Objet 3<input class="t4" data-a="un ordinateur"></label><label>👝 Objet 4<input class="t4" data-a="une trousse"></label>
+<label>✏️ Objet 5<input class="t4" data-a="un taille-crayon"></label><label>✂️ Objet 6<input class="t4" data-a="les ciseaux"></label>
+</div><button class="primary" onclick="checkText('e4')">Vérifier</button><div id="f4" class="feedback"></div></div>
 </section>
 
-<section class="card">
-<h2>2. Choisis la bonne réponse</h2>
-<div class="q" data-answer="un père"><b>een vader</b>
-<div class="option"><input type="radio" name="q2a" value="une mère"> une mère</div>
-<div class="option"><input type="radio" name="q2a" value="un père"> un père</div></div>
-<div class="q" data-answer="un cousin"><b>een neef</b>
-<div class="option"><input type="radio" name="q2b" value="un cousin"> un cousin</div>
-<div class="option"><input type="radio" name="q2b" value="une cousine"> une cousine</div></div>
-<div class="q" data-answer="une cousine"><b>een nicht</b>
-<div class="option"><input type="radio" name="q2c" value="une cousine"> une cousine</div>
-<div class="option"><input type="radio" name="q2c" value="un cousin"> un cousin</div></div>
-<div class="q" data-answer="un mari"><b>een echtgenoot</b>
-<div class="option"><input type="radio" name="q2d" value="un mari"> un mari</div>
-<div class="option"><input type="radio" name="q2d" value="un père"> un père</div></div>
-<div class="q" data-answer="la femme"><b>de vrouw</b>
-<div class="option"><input type="radio" name="q2e" value="la mère"> la mère</div>
-<div class="option"><input type="radio" name="q2e" value="la femme"> la femme</div></div>
-<div class="q" data-answer="un grand-père"><b>een grootvader</b>
-<div class="option"><input type="radio" name="q2f" value="un grand-père"> un grand-père</div>
-<div class="option"><input type="radio" name="q2f" value="une grand-mère"> une grand-mère</div></div>
-<div class="q" data-answer="une fille"><b>een dochter</b>
-<div class="option"><input type="radio" name="q2g" value="un fils"> un fils</div>
-<div class="option"><input type="radio" name="q2g" value="une fille"> une fille</div></div>
-<button onclick="checkChoice(this)">Vérifier l'exercice 2</button>
-<div class="feedback"></div>
+<section id="test" class="screen"><button class="back" onclick="openScreen('home')">← Accueil</button>
+<div class="card"><span class="badge">🏆 Test final</span><h2>Teste tes connaissances</h2><p>10 questions rapides. Une seule réponse par question.</p>
+<div id="testQuestions"></div><button class="primary green" onclick="finishTest()">Terminer le test</button><div id="testResult" class="feedback"></div></div></section>
+
+
+<section id="game" class="screen"><button class="back" onclick="openScreen('home')">← Accueil</button>
+<div class="card game-card" style="text-align:center">
+<span class="badge">🎮 Mode jeu</span>
+<h2>Défi vocabulaire</h2>
+<div class="stats"><div class="stat"><strong id="gamePoints">0</strong><small>Points</small></div><div class="stat"><strong id="gameRound">1/10</strong><small>Manche</small></div><div class="stat"><strong id="gameTimer">15</strong><small>Secondes</small></div></div>
+<p class="lives" id="lives">❤️❤️❤️</p>
+<p class="game-prompt">Quelle est la traduction française ?</p>
+<div class="game-word" id="gameWord">een vader</div>
+<div class="game-options" id="gameOptions"></div>
+<div id="gameFeedback" class="feedback"></div>
+<button class="primary green" onclick="startGame()">Nouvelle partie</button>
+</div>
+<div class="card"><h2>🖼️ Mémo illustré</h2><div class="illustrations">
+<div class="illus"><span class="pic">👨</span><b>un père</b></div>
+<div class="illus"><span class="pic">👩</span><b>une mère</b></div>
+<div class="illus"><span class="pic">👦</span><b>un fils</b></div>
+<div class="illus"><span class="pic">👧</span><b>une fille</b></div>
+<div class="illus"><span class="pic">📓</span><b>un cahier</b></div>
+<div class="illus"><span class="pic">✂️</span><b>les ciseaux</b></div>
+<div class="illus"><span class="pic">🧽</span><b>une gomme</b></div>
+<div class="illus"><span class="pic">💻</span><b>un ordinateur</b></div>
+</div></div>
 </section>
 
-<section class="card">
-<h2>3. La famille</h2>
-<p>À partir de l'arbre familial de la feuille, complète les phrases.</p>
-<div class="grid">
-<label>Ma ___ est Emma.
-<select class="family" data-answer="sœur"><option value="">Choisir…</option><option>sœur</option><option>frère</option></select></label>
-<label>Ma ___ est Vera.
-<select class="family" data-answer="mère"><option value="">Choisir…</option><option>mère</option><option>père</option></select></label>
-<label>Ma ___ est Lisa.
-<select class="family" data-answer="cousine"><option value="">Choisir…</option><option>tante</option><option>cousine</option></select></label>
-<label>Mon ___ est Hendric.
-<select class="family" data-answer="grand-père"><option value="">Choisir…</option><option>grand-père</option><option>père</option></select></label>
-<label>Ma ___ est Suzanne.
-<select class="family" data-answer="grand-mère"><option value="">Choisir…</option><option>grand-mère</option><option>cousine</option></select></label>
-</div>
-<button onclick="checkSelect(this)">Vérifier l'exercice 3</button>
-<div class="feedback"></div>
+<section id="results" class="screen"><button class="back" onclick="openScreen('home')">← Accueil</button>
+<div class="card" style="text-align:center"><span class="badge">📊 Ma progression</span><h2>Mes résultats</h2>
+<div class="score-circle"><div><strong id="bigScore">0%</strong><span>score exercices</span></div></div>
+<h2 id="levelResult">⭐ Débutant</h2>
+<div class="stats"><div class="stat"><strong id="rDone">0/4</strong><small>Exercices</small></div><div class="stat"><strong id="rTest">—</strong><small>Test final</small></div></div>
+<button class="primary" onclick="openScreen('test')">Faire le test final</button></div>
 </section>
-
-<section class="card">
-<h2>4. Les objets de l'école</h2>
-<p>Donne le nom français de chaque objet.</p>
-<div class="grid">
-<label>📓 Objet 1<input data-answer="un cahier" class="textans"></label>
-<label>🧽 Objet 2<input data-answer="une gomme" class="textans"></label>
-<label>💻 Objet 3<input data-answer="un ordinateur" class="textans"></label>
-<label>👝 Objet 4<input data-answer="une trousse" class="textans"></label>
-<label>✏️ Objet 5<input data-answer="un taille-crayon" class="textans"></label>
-<label>✂️ Objet 6<input data-answer="les ciseaux" class="textans"></label>
+</main>
+<nav class="bottom">
+<button class="nav active" data-screen="home" onclick="openScreen('home')"><span class="nicon">🏠</span>Accueil</button>
+<button class="nav" data-screen="vocab" onclick="openScreen('vocab')"><span class="nicon">📚</span>Mots</button>
+<button class="nav" data-screen="exercises" onclick="openScreen('exercises')"><span class="nicon">✏️</span>Exercices</button>
+<button class="nav" data-screen="test" onclick="openScreen('test')"><span class="nicon">🏆</span>Test</button>
+<button class="nav" data-screen="game" onclick="openScreen('game')"><span class="nicon">🎮</span>Jeu</button>
+<button class="nav" data-screen="results" onclick="openScreen('results')"><span class="nicon">📊</span>Résultats</button>
+</nav>
 </div>
-<button onclick="checkText(this)">Vérifier l'exercice 4</button>
-<div class="feedback"></div>
-</section>
-
-<div class="card" id="final">
-<h2>🏆 Résultat</h2>
-<p>Vérifie les quatre exercices pour obtenir ton score.</p>
-<div id="score">0 / 23</div>
-<button class="green" onclick="resetAll()">Recommencer</button>
-</div>
-</div>
-<footer>Révision Français — La famille et l'école</footer>
 <script>
-let scores={e1:null,e2:null,e3:null,e4:null};
-function norm(s){return s.trim().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[’']/g,"'").replace(/\s+/g," ");}
-function checkText(btn){
- const section=btn.closest(".card"), inputs=[...section.querySelectorAll(".textans")];
- let n=0; inputs.forEach(i=>{if(norm(i.value)===norm(i.dataset.answer)){n++;i.style.borderColor="#20a36a"}else{i.style.borderColor="#d9534f"}});
- let key=section.querySelector("h2").textContent.startsWith("1.")?"e1":"e4"; scores[key]=n;
- show(section,`${n} / ${inputs.length} correct${n>1?"s":""}.`,n===inputs.length);
- update();
+const state=JSON.parse(localStorage.getItem('frRevision')||'{"scores":[null,null,null,null],"test":null}');
+function save(){localStorage.setItem('frRevision',JSON.stringify(state));updateUI()}
+function norm(x){return (x||'').trim().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/\s+/g,' ')}
+function openScreen(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.nav').forEach(n=>n.classList.toggle('active',n.dataset.screen===id));window.scrollTo({top:0,behavior:'smooth'});if(id==='test')buildTest();updateUI()}
+function feedback(id,n,total){const el=document.getElementById(id);el.className='feedback '+(n===total?'good':'bad');el.textContent=`${n} / ${total} correct${n>1?'s':''}.`;el.style.display='block'}
+function checkText(id){let box=document.getElementById(id),inputs=[...box.querySelectorAll('.t')],n=0;inputs.forEach(i=>{let ok=norm(i.value)===norm(i.dataset.a);if(ok)n++;i.style.borderColor=ok?'#19a66a':'#d9534f'});state.scores[0]=n;feedback('f1',n,6);save()}
+function checkRadio(){let ans=['un père','un cousin','une cousine','un mari','la femme','un grand-père','une fille'],n=0;ans.forEach((a,i)=>{let x=document.querySelector(`input[name=a${i+1}]:checked`);if(x&&norm(x.value)===norm(a))n++});state.scores[1]=n;feedback('f2',n,7);save()}
+function checkSelect(){let xs=[...document.querySelectorAll('.s')],n=xs.filter(x=>norm(x.value)===norm(x.dataset.a)).length;state.scores[2]=n;feedback('f3',n,5);save()}
+function checkE4(){return}
+function checkTextE4(){let xs=[...document.querySelectorAll('.t4')],n=xs.filter(x=>norm(x.value)===norm(x.dataset.a)).length;xs.forEach(x=>x.style.borderColor=norm(x.value)===norm(x.dataset.a)?'#19a66a':'#d9534f');state.scores[3]=n;feedback('f4',n,6);save()}
+document.querySelector('#e4 button').onclick=checkTextE4;
+
+const test=[
+['een moeder','un père','une mère','une sœur'],['een broer','un frère','un fils','un cousin'],
+['de ouders','les parents','les enfants','la famille'],['een potlood','un cahier','un crayon','un stylo'],
+['de schaar','la colle','les ciseaux','la gomme'],['een grootmoeder','une tante','une grand-mère','une mère'],
+['een dochter','une fille','un fils','une cousine'],['een echtgenoot','un mari','un père','un oncle'],
+['een ordinateur','une calculatrice','un ordinateur','un tableau'],['een trousse','un cartable','une trousse','un cahier']];
+function buildTest(){let wrap=document.getElementById('testQuestions');wrap.innerHTML='';test.forEach((q,i)=>{let d=document.createElement('div');d.className='q';d.innerHTML=`<div class="q-title">${i+1}. ${q[0]}</div>`+q.slice(1).map(x=>`<label class="choice"><input type="radio" name="t${i}" value="${x}">${x}</label>`).join('');wrap.appendChild(d)})}
+function celebrate(){document.body.animate([{filter:'brightness(1)'},{filter:'brightness(1.12)'},{filter:'brightness(1)'}],{duration:500});}
+function finishTest(){let n=0;test.forEach((q,i)=>{let x=document.querySelector(`input[name=t${i}]:checked`);if(x&&norm(x.value)===norm(q[1]))n++});state.test=n;save();celebrate();let e=document.getElementById('testResult');e.className='feedback good';e.style.display='block';e.textContent=`Résultat : ${n} / 10 — ${Math.round(n*10)}%`;document.getElementById('rTest').textContent=n+'/10'}
+function speak(text){if('speechSynthesis' in window){speechSynthesis.cancel();let u=new SpeechSynthesisUtterance(text);u.lang='fr-FR';u.rate=.82;speechSynthesis.speak(u)}}
+function getXP(){let total=state.scores.reduce((a,b)=>a+(b||0),0);return total*10+(state.test===null?0:state.test*5)}
+function levelData(xp){if(xp>=220)return ['👑','Maître','Maître du français'];if(xp>=150)return ['🏆','Expert','Très bon niveau'];if(xp>=90)return ['🔥','Avancé','Tu progresses très bien'];if(xp>=40)return ['⭐','Intermédiaire','Continue comme ça'];return ['🌱','Débutant','Commence ton aventure']}
+
+const gameData=[
+['een vader','un père','une mère','un père','un frère'],
+['een moeder','une mère','une sœur','une tante','un père'],
+['een broer','un frère','un fils','un cousin','une sœur'],
+['een zus','une sœur','une fille','une cousine','un frère'],
+['een grootmoeder','une grand-mère','une mère','une tante','un grand-père'],
+['een zoon','un fils','une fille','un frère','un cousin'],
+['een dochter','une fille','un fils','une cousine','une sœur'],
+['een cahier','un cahier','un crayon','un stylo','un cartable'],
+['de schaar','les ciseaux','la colle','une gomme','une règle'],
+['een computer','un ordinateur','une calculatrice','un tableau','un cahier']
+];
+let game={round:0,points:0,lives:3,timer:15,active:false,interval:null};
+function startGame(){
+ clearInterval(game.interval);game={round:0,points:0,lives:3,timer:15,active:true,interval:null};nextGameRound();
 }
-function checkChoice(btn){
- const section=btn.closest(".card"), qs=[...section.querySelectorAll(".q")]; let n=0;
- qs.forEach(q=>{let x=q.querySelector("input:checked"); if(x&&norm(x.value)===norm(q.dataset.answer)) n++;});
- scores.e2=n; show(section,`${n} / ${qs.length} correct${n>1?"s":""}.`,n===qs.length); update();
+function nextGameRound(){
+ if(!game.active)return;
+ if(game.round>=10){gameEnd();return}
+ game.timer=15;document.getElementById('gameRound').textContent=(game.round+1)+'/10';document.getElementById('gamePoints').textContent=game.points;document.getElementById('lives').textContent='❤️'.repeat(game.lives)+'🖤'.repeat(3-game.lives);document.getElementById('gameTimer').textContent=game.timer;
+ let q=gameData[game.round], opts=q.slice(1).sort(()=>Math.random()-.5),box=document.getElementById('gameOptions');document.getElementById('gameWord').textContent=q[0];box.innerHTML='';
+ opts.forEach(x=>{let b=document.createElement('button');b.className='game-opt';b.textContent=x;b.onclick=()=>gameAnswer(b,x===q[1]);box.appendChild(b)});
+ clearInterval(game.interval);game.interval=setInterval(()=>{game.timer--;document.getElementById('gameTimer').textContent=game.timer;if(game.timer<=0){clearInterval(game.interval);gameAnswer(null,false,true)}},1000);
 }
-function checkSelect(btn){
- const section=btn.closest(".card"), qs=[...section.querySelectorAll(".family")]; let n=0;
- qs.forEach(q=>{if(norm(q.value)===norm(q.dataset.answer))n++;});
- scores.e3=n; show(section,`${n} / ${qs.length} correct${n>1?"s":""}.`,n===qs.length); update();
+function gameAnswer(btn,ok,timeout=false){
+ if(!game.active)return;clearInterval(game.interval);
+ if(ok){game.points+=10;if(btn)btn.classList.add('correct')}else{game.lives--;if(btn)btn.classList.add('wrong')}
+ document.getElementById('gamePoints').textContent=game.points;document.getElementById('lives').textContent='❤️'.repeat(game.lives)+'🖤'.repeat(3-game.lives);
+ let f=document.getElementById('gameFeedback');f.className='feedback '+(ok?'good':'bad');f.style.display='block';f.textContent=ok?'✨ Bravo ! +10 points':(timeout?'⏰ Temps écoulé !':'❌ Pas cette fois !');
+ game.round++;
+ if(game.lives<=0){setTimeout(gameEnd,650);return}
+ setTimeout(()=>{f.style.display='none';nextGameRound()},650);
 }
-function show(section,msg,good){let f=section.querySelector(".feedback");f.className="feedback result "+(good?"good":"bad");f.textContent=msg;}
-function update(){
- let done=Object.values(scores).filter(x=>x!==null).length;
- let total=Object.values(scores).reduce((a,b)=>a+(b||0),0);
- let max=23;
- document.getElementById("bar").style.width=(done/4*100)+"%";
- document.getElementById("score").innerHTML=`<strong>${total} / ${max}</strong> — ${Math.round(total/max*100)}%`;
+function gameEnd(){
+ clearInterval(game.interval);game.active=false;
+ let f=document.getElementById('gameFeedback');f.className='feedback good';f.style.display='block';f.textContent=`🏁 Partie terminée : ${game.points} points sur 100.`;
 }
-function resetAll(){
- document.querySelectorAll("input").forEach(x=>{x.value="";x.checked=false;x.style.borderColor=""});
- document.querySelectorAll("select").forEach(x=>x.value="");
- document.querySelectorAll(".feedback").forEach(x=>{x.className="feedback";x.textContent=""});
- scores={e1:null,e2:null,e3:null,e4:null};update();
- window.scrollTo({top:0,behavior:"smooth"});
-}
-update();
+function updateUI(){let done=state.scores.filter(x=>x!==null).length,total=state.scores.reduce((a,b)=>a+(b||0),0),max=24,p=Math.round(total/max*100),xp=getXP(),lv=levelData(xp);document.getElementById('homeScore').textContent=p+'%';document.getElementById('homeDone').textContent=done+'/4';document.getElementById('homeXP').textContent=xp;document.getElementById('bigScore').textContent=p+'%';document.getElementById('rDone').textContent=done+'/4';document.getElementById('rTest').textContent=state.test===null?'—':state.test+'/10';document.getElementById('exProgress').style.width=(done/4*100)+'%';document.getElementById('levelIcon').textContent=lv[0];document.getElementById('levelName').textContent=lv[1];document.getElementById('xpText').textContent=xp+' XP • '+lv[2];document.getElementById('xpBar').style.width=Math.min(100,(xp%50)/50*100)+'%';document.getElementById('levelResult').textContent=lv[0]+' '+lv[1]}
+updateUI();buildTest();
 </script>
-</body>
-</html>
+</body></html>
