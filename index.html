@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#1769aa">
+<title>Révision Français — La famille et l'école</title>
+<link rel="manifest" href="manifest.json">
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#eef5fb;color:#17202a}
+header{background:linear-gradient(135deg,#1769aa,#2b8ac6);color:#fff;padding:26px 18px;text-align:center}
+header h1{margin:0 0 8px;font-size:25px}
+header p{margin:0;opacity:.95}
+.container{max-width:900px;margin:auto;padding:18px}
+.card{background:#fff;border-radius:18px;padding:20px;margin:16px 0;box-shadow:0 5px 18px #00000012}
+h2{margin-top:0;color:#1769aa}
+.progress{height:10px;background:#dce8f2;border-radius:99px;overflow:hidden;margin:10px 0 18px}
+.progress div{height:100%;width:0;background:#20a36a;transition:.25s}
+label{display:block;margin:10px 0}
+input[type=text],select{width:100%;padding:12px;border:1px solid #c9d6e0;border-radius:10px;font-size:16px}
+.option{padding:12px;border:1px solid #d5e0e8;border-radius:12px;margin:8px 0;cursor:pointer}
+.option:hover{background:#f2f8fc}
+button{border:0;border-radius:12px;padding:12px 17px;background:#1769aa;color:white;font-size:16px;cursor:pointer;margin:5px}
+button.secondary{background:#5d6d7e}
+button.green{background:#20a36a}
+.result{padding:12px;border-radius:12px;margin-top:12px;font-weight:bold}
+.good{background:#e7f7ef;color:#146b43}
+.bad{background:#fff0f0;color:#a72b2b}
+.small{font-size:14px;color:#61717f}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.word{background:#f6f9fb;padding:13px;border-radius:12px}
+@media(max-width:650px){.grid{grid-template-columns:1fr} header h1{font-size:21px}}
+footer{text-align:center;padding:25px;color:#71808c;font-size:13px}
+</style>
+</head>
+<body>
+<header>
+<h1>🇫🇷 Révision Français</h1>
+<p>La famille • L'école • La classe</p>
+</header>
+<div class="container">
+<div class="card">
+<h2>👋 Commencer</h2>
+<label>Prénom
+<input id="prenom" type="text" placeholder="Écris ton prénom">
+</label>
+<p class="small">Fais les exercices dans l'ordre. Ton score se calcule automatiquement.</p>
+<div class="progress"><div id="bar"></div></div>
+</div>
+
+<section class="card">
+<h2>1. Traduction</h2>
+<p>Écris la traduction française.</p>
+<div class="grid">
+<label>een zus<input data-answer="une sœur" class="textans"></label>
+<label>een grootmoeder<input data-answer="une grand-mère" class="textans"></label>
+<label>de ouders<input data-answer="les parents" class="textans"></label>
+<label>een broer<input data-answer="un frère" class="textans"></label>
+<label>een zoon<input data-answer="un fils" class="textans"></label>
+<label>de kinderen<input data-answer="les enfants" class="textans"></label>
+</div>
+<button onclick="checkText(this)">Vérifier l'exercice 1</button>
+<div class="feedback"></div>
+</section>
+
+<section class="card">
+<h2>2. Choisis la bonne réponse</h2>
+<div class="q" data-answer="un père"><b>een vader</b>
+<div class="option"><input type="radio" name="q2a" value="une mère"> une mère</div>
+<div class="option"><input type="radio" name="q2a" value="un père"> un père</div></div>
+<div class="q" data-answer="un cousin"><b>een neef</b>
+<div class="option"><input type="radio" name="q2b" value="un cousin"> un cousin</div>
+<div class="option"><input type="radio" name="q2b" value="une cousine"> une cousine</div></div>
+<div class="q" data-answer="une cousine"><b>een nicht</b>
+<div class="option"><input type="radio" name="q2c" value="une cousine"> une cousine</div>
+<div class="option"><input type="radio" name="q2c" value="un cousin"> un cousin</div></div>
+<div class="q" data-answer="un mari"><b>een echtgenoot</b>
+<div class="option"><input type="radio" name="q2d" value="un mari"> un mari</div>
+<div class="option"><input type="radio" name="q2d" value="un père"> un père</div></div>
+<div class="q" data-answer="la femme"><b>de vrouw</b>
+<div class="option"><input type="radio" name="q2e" value="la mère"> la mère</div>
+<div class="option"><input type="radio" name="q2e" value="la femme"> la femme</div></div>
+<div class="q" data-answer="un grand-père"><b>een grootvader</b>
+<div class="option"><input type="radio" name="q2f" value="un grand-père"> un grand-père</div>
+<div class="option"><input type="radio" name="q2f" value="une grand-mère"> une grand-mère</div></div>
+<div class="q" data-answer="une fille"><b>een dochter</b>
+<div class="option"><input type="radio" name="q2g" value="un fils"> un fils</div>
+<div class="option"><input type="radio" name="q2g" value="une fille"> une fille</div></div>
+<button onclick="checkChoice(this)">Vérifier l'exercice 2</button>
+<div class="feedback"></div>
+</section>
+
+<section class="card">
+<h2>3. La famille</h2>
+<p>À partir de l'arbre familial de la feuille, complète les phrases.</p>
+<div class="grid">
+<label>Ma ___ est Emma.
+<select class="family" data-answer="sœur"><option value="">Choisir…</option><option>sœur</option><option>frère</option></select></label>
+<label>Ma ___ est Vera.
+<select class="family" data-answer="mère"><option value="">Choisir…</option><option>mère</option><option>père</option></select></label>
+<label>Ma ___ est Lisa.
+<select class="family" data-answer="cousine"><option value="">Choisir…</option><option>tante</option><option>cousine</option></select></label>
+<label>Mon ___ est Hendric.
+<select class="family" data-answer="grand-père"><option value="">Choisir…</option><option>grand-père</option><option>père</option></select></label>
+<label>Ma ___ est Suzanne.
+<select class="family" data-answer="grand-mère"><option value="">Choisir…</option><option>grand-mère</option><option>cousine</option></select></label>
+</div>
+<button onclick="checkSelect(this)">Vérifier l'exercice 3</button>
+<div class="feedback"></div>
+</section>
+
+<section class="card">
+<h2>4. Les objets de l'école</h2>
+<p>Donne le nom français de chaque objet.</p>
+<div class="grid">
+<label>📓 Objet 1<input data-answer="un cahier" class="textans"></label>
+<label>🧽 Objet 2<input data-answer="une gomme" class="textans"></label>
+<label>💻 Objet 3<input data-answer="un ordinateur" class="textans"></label>
+<label>👝 Objet 4<input data-answer="une trousse" class="textans"></label>
+<label>✏️ Objet 5<input data-answer="un taille-crayon" class="textans"></label>
+<label>✂️ Objet 6<input data-answer="les ciseaux" class="textans"></label>
+</div>
+<button onclick="checkText(this)">Vérifier l'exercice 4</button>
+<div class="feedback"></div>
+</section>
+
+<div class="card" id="final">
+<h2>🏆 Résultat</h2>
+<p>Vérifie les quatre exercices pour obtenir ton score.</p>
+<div id="score">0 / 23</div>
+<button class="green" onclick="resetAll()">Recommencer</button>
+</div>
+</div>
+<footer>Révision Français — La famille et l'école</footer>
+<script>
+let scores={e1:null,e2:null,e3:null,e4:null};
+function norm(s){return s.trim().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[’']/g,"'").replace(/\s+/g," ");}
+function checkText(btn){
+ const section=btn.closest(".card"), inputs=[...section.querySelectorAll(".textans")];
+ let n=0; inputs.forEach(i=>{if(norm(i.value)===norm(i.dataset.answer)){n++;i.style.borderColor="#20a36a"}else{i.style.borderColor="#d9534f"}});
+ let key=section.querySelector("h2").textContent.startsWith("1.")?"e1":"e4"; scores[key]=n;
+ show(section,`${n} / ${inputs.length} correct${n>1?"s":""}.`,n===inputs.length);
+ update();
+}
+function checkChoice(btn){
+ const section=btn.closest(".card"), qs=[...section.querySelectorAll(".q")]; let n=0;
+ qs.forEach(q=>{let x=q.querySelector("input:checked"); if(x&&norm(x.value)===norm(q.dataset.answer)) n++;});
+ scores.e2=n; show(section,`${n} / ${qs.length} correct${n>1?"s":""}.`,n===qs.length); update();
+}
+function checkSelect(btn){
+ const section=btn.closest(".card"), qs=[...section.querySelectorAll(".family")]; let n=0;
+ qs.forEach(q=>{if(norm(q.value)===norm(q.dataset.answer))n++;});
+ scores.e3=n; show(section,`${n} / ${qs.length} correct${n>1?"s":""}.`,n===qs.length); update();
+}
+function show(section,msg,good){let f=section.querySelector(".feedback");f.className="feedback result "+(good?"good":"bad");f.textContent=msg;}
+function update(){
+ let done=Object.values(scores).filter(x=>x!==null).length;
+ let total=Object.values(scores).reduce((a,b)=>a+(b||0),0);
+ let max=23;
+ document.getElementById("bar").style.width=(done/4*100)+"%";
+ document.getElementById("score").innerHTML=`<strong>${total} / ${max}</strong> — ${Math.round(total/max*100)}%`;
+}
+function resetAll(){
+ document.querySelectorAll("input").forEach(x=>{x.value="";x.checked=false;x.style.borderColor=""});
+ document.querySelectorAll("select").forEach(x=>x.value="");
+ document.querySelectorAll(".feedback").forEach(x=>{x.className="feedback";x.textContent=""});
+ scores={e1:null,e2:null,e3:null,e4:null};update();
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+update();
+</script>
+</body>
+</html>
