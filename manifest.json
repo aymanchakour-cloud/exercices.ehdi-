@@ -1,9 +1,9 @@
 {
-  "name": "Français • Famille & École",
-  "short_name": "Français",
-  "start_url": "./index.html",
+  "name": "Les maths de Mehdi",
+  "short_name": "Maths Mehdi",
+  "start_url": ".",
   "display": "standalone",
-  "background_color": "#f3f7fb",
-  "theme_color": "#1769aa",
-  "icons": []
+  "background_color": "#f4f7fb",
+  "theme_color": "#2563eb",
+  "description": "Application de maths avec explications, calculs et problèmes étape par étape."
 }
