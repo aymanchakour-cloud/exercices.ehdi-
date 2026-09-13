@@ -1,9 +1,10 @@
 {
-  "name": "Les maths de Mehdi",
-  "short_name": "Maths Mehdi",
-  "start_url": ".",
+  "name": "De wiskunde van Mehdi",
+  "short_name": "Wiskunde Mehdi",
+  "start_url": "./",
   "display": "standalone",
-  "background_color": "#f4f7fb",
   "theme_color": "#2563eb",
-  "description": "Application de maths avec explications, calculs et problèmes étape par étape."
+  "background_color": "#f4f7fb",
+  "lang": "nl",
+  "icons": []
 }

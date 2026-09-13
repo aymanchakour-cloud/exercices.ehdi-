@@ -1,109 +1,20 @@
-<!doctype html>
-<html lang="fr">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#2563eb">
-<link rel="manifest" href="manifest.json">
-<title>Les maths de Mehdi</title>
-<style>
-:root{--bg:#f4f7fb;--card:#fff;--text:#172033;--muted:#657089;--blue:#2563eb;--green:#16a34a;--red:#dc2626;--yellow:#f59e0b;--shadow:0 8px 28px #00000012}
-*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:var(--bg);color:var(--text)}
-.app{max-width:850px;margin:auto;min-height:100vh;padding-bottom:82px}.top{background:linear-gradient(135deg,#2563eb,#4f46e5);color:white;padding:24px 18px 28px;border-radius:0 0 28px 28px}
-.top h1{margin:0;font-size:30px}.top p{margin:8px 0 0;opacity:.9}.xp{margin-top:18px;background:#ffffff25;border-radius:18px;padding:12px}.bar{height:9px;background:#ffffff35;border-radius:20px;overflow:hidden}.bar span{display:block;height:100%;background:#fff;border-radius:20px;width:0}
-main{padding:18px}.screen{display:none}.screen.active{display:block}.card{background:var(--card);border-radius:20px;padding:18px;margin:12px 0;box-shadow:var(--shadow)}
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.op{border:0;border-radius:20px;padding:22px 12px;font-size:22px;font-weight:700;background:white;box-shadow:var(--shadow);cursor:pointer}.op small{display:block;font-size:13px;color:var(--muted);margin-top:7px;font-weight:400}
-button{font:inherit}.primary{border:0;background:var(--blue);color:white;border-radius:14px;padding:13px 18px;font-weight:700;cursor:pointer}.secondary{border:1px solid #d8deea;background:white;color:var(--text);border-radius:14px;padding:12px 16px;cursor:pointer}.answers{display:grid;gap:10px;margin-top:15px}.answer{border:2px solid #e3e8f2;background:white;border-radius:14px;padding:14px;text-align:left;cursor:pointer}.answer.correct{border-color:var(--green);background:#effcf3}.answer.wrong{border-color:var(--red);background:#fff1f2}.feedback{margin-top:14px;padding:14px;border-radius:14px;background:#f1f5ff}.big{font-size:34px;font-weight:800;text-align:center;margin:18px 0}.step{display:flex;gap:12px;align-items:flex-start;margin:12px 0}.num{min-width:32px;height:32px;border-radius:50%;background:#dbeafe;color:#1d4ed8;display:grid;place-items:center;font-weight:800}.hint{background:#fff8e7;border-left:5px solid var(--yellow);padding:13px;border-radius:10px;margin-top:12px}.success{background:#ecfdf3;color:#166534;padding:13px;border-radius:12px}.error{background:#fff1f2;color:#991b1b;padding:13px;border-radius:12px}.input{width:100%;padding:14px;border:2px solid #dbe2ee;border-radius:13px;font-size:22px;text-align:center}.nav{position:fixed;bottom:0;left:0;right:0;background:white;border-top:1px solid #e5e7eb;display:flex;justify-content:center;gap:8px;padding:9px;z-index:5}.nav button{border:0;background:transparent;padding:8px 13px;color:#667085;cursor:pointer}.nav button.active{color:var(--blue);font-weight:800}.tag{display:inline-block;background:#e8efff;color:#1d4ed8;border-radius:20px;padding:6px 10px;font-size:12px;font-weight:700}
-@media(min-width:700px){.nav{left:50%;transform:translateX(-50%);max-width:850px;border-radius:20px 20px 0 0}.grid{grid-template-columns:repeat(4,1fr)}}
-</style>
-</head>
-<body>
-<div class="app">
-<header class="top">
-  <h1>🧠 Les maths de Mehdi</h1>
-  <p>J'apprends, je réfléchis et je réussis !</p>
-  <div class="xp"><b id="level">Niveau 1 · Débutant</b><div class="bar"><span id="bar"></span></div><small id="xpText">0 XP</small></div>
-</header>
-
+<!doctype html><html lang="nl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="manifest" href="manifest.json"><title>De wiskunde van Mehdi</title><style>
+body{font-family:Arial;margin:0;background:#f4f7fb;color:#172033}header{background:#2563eb;color:white;text-align:center;padding:22px}main{max-width:800px;margin:auto;padding:15px 15px 80px}.card{background:white;border-radius:18px;padding:18px;margin:14px 0;box-shadow:0 3px 15px #0001}button{border:0;border-radius:12px;padding:13px;margin:5px;font-weight:bold;font-size:16px;cursor:pointer}.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.big{min-height:70px;background:#eef4ff}.primary{background:#2563eb;color:white}.good{background:#dcfce7;color:#166534}.bad{background:#fee2e2;color:#991b1b}.choice{width:calc(50% - 14px);background:#eef2f7}.step{padding:15px;border-left:6px solid #2563eb;background:#f8fbff;border-radius:12px;margin:10px 0}.example{padding:15px;background:#eef4ff;border-radius:12px;font-size:18px}input{width:100%;padding:14px;box-sizing:border-box;font-size:20px;border:2px solid #ccd5e1;border-radius:12px}.hidden{display:none}nav{position:fixed;bottom:0;left:0;right:0;background:white;border-top:1px solid #ddd;text-align:center;padding:8px}.feedback{padding:12px;border-radius:12px;font-weight:bold}.small{color:#667085}</style></head><body>
+<header><h1>🧠 De wiskunde van Mehdi</h1><p>Stap voor stap leren rekenen</p><b>⭐ XP: <span id="xp">0</span> · Niveau <span id="level">1</span></b></header>
 <main>
-<section id="home" class="screen active">
-  <div class="card"><span class="tag">APPRENDRE</span><h2>Bienvenue Mehdi 👋</h2>
-  <p>Choisis une opération. Je t'explique d'abord <b>comment ça marche</b>, puis tu peux t'entraîner.</p></div>
-  <div class="grid">
-    <button class="op" onclick="openLesson('add')">➕<br>Addition<small>Mettre ensemble</small></button>
-    <button class="op" onclick="openLesson('sub')">➖<br>Soustraction<small>Enlever / comparer</small></button>
-    <button class="op" onclick="openLesson('mul')">✖️<br>Multiplication<small>Répéter plusieurs fois</small></button>
-    <button class="op" onclick="openLesson('div')">➗<br>Division<small>Partager également</small></button>
-  </div>
-  <div class="card"><h2>🧩 Problèmes comme à l'école</h2><p>Lis → cherche les nombres → choisis l'opération → calcule → réponds → vérifie.</p><button class="primary" onclick="startProblems()">Commencer les problèmes</button></div>
-  <div class="card"><h2>🎯 Défi rapide</h2><p>10 calculs mélangés, avec une correction et une explication après chaque réponse.</p><button class="secondary" onclick="startQuiz()">Lancer le défi</button></div>
-</section>
-
-<section id="lesson" class="screen">
-  <div id="lessonContent"></div>
-</section>
-
-<section id="practice" class="screen">
-  <div class="card"><span class="tag" id="practiceTag"></span><h2 id="practiceTitle"></h2><p id="practiceExplain"></p><div class="big" id="question"></div><input id="answer" class="input" inputmode="numeric" placeholder="Écris ta réponse"><br><br><button class="primary" onclick="checkPractice()">Vérifier</button><div id="practiceFeedback"></div></div>
-</section>
-
-<section id="problems" class="screen">
-  <div class="card"><span class="tag">PROBLÈME</span><h2 id="problemTitle"></h2><p id="problemText"></p><div class="hint"><b>Étape 1 👀</b><br>Quels sont les nombres importants ?<br><small>Regarde les nombres dans l'histoire.</small></div>
-  <h3>Étape 2 🤔 Quelle opération ?</h3><div class="grid" id="problemOps"></div><div id="problemResult"></div></div>
-</section>
-
-<section id="quiz" class="screen">
-  <div class="card"><span class="tag">DÉFI</span><p id="quizCount"></p><h2 id="quizQuestion"></h2><div class="answers" id="quizAnswers"></div><div id="quizFeedback"></div></div>
-</section>
-
-<section id="results" class="screen">
-  <div class="card" style="text-align:center"><div style="font-size:64px">🏆</div><h2>Bravo Mehdi !</h2><p id="resultText"></p><button class="primary" onclick="show('home')">Retour à l'accueil</button></div>
-</section>
-</main>
-
-<nav class="nav">
-<button onclick="show('home')">🏠<br>Accueil</button>
-<button onclick="openLesson('add')">➕<br>Calculs</button>
-<button onclick="startProblems()">🧩<br>Problèmes</button>
-<button onclick="startQuiz()">🎯<br>Défi</button>
-</nav>
-</div>
-
+<section id="home"><div class="card"><h2>Welkom Mehdi! 👋</h2><p>Bij elk vraagstuk werk je in <b>4 stappen</b>.</p><div class="grid"><button class="big" onclick="learn('Optellen','Bij optellen doe je aantallen bij elkaar. Voorbeeld: 240 + 130 = 370.')">➕ Optellen</button><button class="big" onclick="learn('Aftrekken','Bij aftrekken haal je iets weg of zoek je het verschil. Voorbeeld: 500 − 180 = 320.')">➖ Aftrekken</button><button class="big" onclick="learn('Vermenigvuldigen','Bij vermenigvuldigen herhaal je dezelfde hoeveelheid. Voorbeeld: 4 × 25 = 100.')">✖️ Vermenigvuldigen</button><button class="big" onclick="learn('Delen','Bij delen verdeel je iets eerlijk. Voorbeeld: 24 : 6 = 4.')">➗ Delen</button></div><button class="primary" onclick="practice()">📝 Oefeningen</button><button onclick="problem()">🧠 Vraagstukken</button></div></section>
+<section id="learn" class="hidden"><div class="card"><button onclick="home()">← Terug</button><h2 id="lt"></h2><div class="example" id="lx"></div><p>Lees rustig, zoek de getallen en controleer je antwoord.</p><button class="primary" onclick="practice()">Oefenen →</button></div></section>
+<section id="practice" class="hidden"><div class="card"><button onclick="home()">← Stoppen</button><h2>📝 Oefening</h2><p id="pq"></p><input id="pa" type="number" placeholder="Jouw antwoord"><button class="primary" onclick="pc()">Nakijken</button><div id="pf"></div><button id="pn" class="good hidden" onclick="practice()">Volgende →</button></div></section>
+<section id="problem" class="hidden"><div class="card"><button onclick="home()">← Stoppen</button><h2>🧠 Vraagstuk</h2><div class="example" id="pt"></div><p><b>Stap <span id="sn">1</span> van 4</b></p><div id="sa"></div><div id="sf"></div></div></section>
+</main><nav><button onclick="home()">🏠 Start</button><button onclick="practice()">📝 Oefenen</button><button onclick="problem()">🧠 Vraagstukken</button></nav>
 <script>
-const lessons={
-add:{name:"Addition",icon:"➕",simple:"L'addition sert à mettre des quantités ensemble.",steps:["Je regarde le premier nombre.","J'ajoute le deuxième nombre.","Je compte combien j'ai en tout."],ex:"3 + 2 = 5",story:"J'ai 3 pommes 🍎 et j'en reçois 2. J'ai 5 pommes en tout."},
-sub:{name:"Soustraction",icon:"➖",simple:"La soustraction sert à enlever quelque chose ou à trouver la différence entre deux nombres.",steps:["Je pars du nombre de départ.","J'enlève le nombre indiqué.","Le résultat est ce qu'il reste."],ex:"8 − 3 = 5",story:"J'ai 8 bonbons 🍬 et j'en mange 3. Il m'en reste 5."},
-mul:{name:"Multiplication",icon:"✖️",simple:"Multiplier, c'est répéter plusieurs fois la même quantité.",steps:["Je regarde combien il y a de groupes.","Je regarde combien il y a dans chaque groupe.","Je peux additionner les groupes ou connaître la table."],ex:"3 × 4 = 12",story:"3 groupes de 4 objets font 12 objets."},
-div:{name:"Division",icon:"➗",simple:"La division sert à partager une quantité en parts égales.",steps:["Je regarde la quantité totale.","Je regarde en combien de parts je partage.","Je cherche combien reçoit chaque part."],ex:"12 ÷ 3 = 4",story:"12 bonbons partagés entre 3 enfants donnent 4 bonbons chacun."}
-};
-const practiceData=[
-["add",12,8],["add",25,14],["add",130,240],["add",1200,350],["sub",18,7],["sub",45,19],["sub",900,275],["sub",5490,2380],["mul",4,6],["mul",7,8],["mul",12,5],["div",20,4],["div",36,6],["div",72,8]
-];
-const problems=[
-{title:"La commande de jouets",text:"En juillet, le directeur commande des jouets pour 2 380 €. En septembre, il fait une deuxième commande. En tout, il doit payer 5 490 €. Combien coûte la deuxième commande ?",op:"sub",a:5490,b:2380,answer:3110,ex:"5 490 − 2 380 = 3 110 €"},
-{title:"Les crayons de couleur",text:"L'école avait une première réserve de 1 650 crayons de couleur. Après une nouvelle livraison, elle en a 2 420 en tout. Combien de crayons ont été ajoutés ?",op:"sub",a:2420,b:1650,answer:770,ex:"2 420 − 1 650 = 770 crayons"},
-{title:"Les cahiers",text:"Une classe reçoit 8 paquets de 25 cahiers. Combien de cahiers reçoit-elle ?",op:"mul",a:8,b:25,answer:200,ex:"8 × 25 = 200 cahiers"},
-{title:"Les bonbons",text:"Mehdi a 96 bonbons. Il les partage également entre 8 enfants. Combien chaque enfant reçoit-il ?",op:"div",a:96,b:8,answer:12,ex:"96 ÷ 8 = 12 bonbons"},
-{title:"La bibliothèque",text:"Une bibliothèque possède 1 275 livres. Elle reçoit encore 825 livres. Combien possède-t-elle maintenant ?",op:"add",a:1275,b:825,answer:2100,ex:"1 275 + 825 = 2 100 livres"}
-];
-let xp=0, currentPractice=null, pIndex=0, quizIndex=0, quizScore=0;
-function updateXP(){let lvl=xp>=220?5:xp>=150?4:xp>=90?3:xp>=40?2:1;let names=["","Débutant","Intermédiaire","Avancé","Expert","Maître"];document.getElementById("level").textContent=`Niveau ${lvl} · ${names[lvl]}`;document.getElementById("xpText").textContent=xp+" XP";document.getElementById("bar").style.width=(xp%50)*2+"%";}
-function show(id){document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));document.getElementById(id).classList.add("active");window.scrollTo({top:0,behavior:"smooth"});}
-function openLesson(type){let l=lessons[type];document.getElementById("lessonContent").innerHTML=`<div class="card"><button class="secondary" onclick="show('home')">← Accueil</button><h2>${l.icon} ${l.name}</h2><div class="success"><b>À retenir :</b> ${l.simple}</div><h3>📚 Comment faire ?</h3>${l.steps.map((s,i)=>`<div class="step"><div class="num">${i+1}</div><div>${s}</div></div>`).join("")}<div class="card"><h3>💡 Exemple</h3><p>${l.story}</p><div class="big">${l.ex}</div></div><button class="primary" onclick="startPractice('${type}')">✏️ Je m'entraîne</button></div>`;show("lesson");}
-function startPractice(type){let list=practiceData.filter(x=>x[0]===type);currentPractice=list[Math.floor(Math.random()*list.length)];let [t,a,b]=currentPractice;let symbol={add:"+",sub:"−",mul:"×",div:"÷"}[t];document.getElementById("practiceTag").textContent=lessons[t].name.toUpperCase();document.getElementById("practiceTitle").textContent="À toi de jouer !";document.getElementById("practiceExplain").textContent=lessons[t].simple;document.getElementById("question").textContent=`${a.toLocaleString("fr-FR")} ${symbol} ${b.toLocaleString("fr-FR")} = ?`;document.getElementById("answer").value="";document.getElementById("practiceFeedback").innerHTML="";show("practice");}
-function calc(t,a,b){return t==="add"?a+b:t==="sub"?a-b:t==="mul"?a*b:a/b}
-function checkPractice(){if(!currentPractice)return;let [t,a,b]=currentPractice, val=Number(document.getElementById("answer").value), good=calc(t,a,b);let f=document.getElementById("practiceFeedback");if(val===good){xp+=10;updateXP();f.innerHTML=`<div class="success">🎉 <b>Bravo !</b> ${good} est la bonne réponse.<br>Tu gagnes <b>+10 XP</b>.</div>`;}else{f.innerHTML=`<div class="error">Pas encore 🙂 La bonne réponse est <b>${good}</b>.</div><div class="hint"><b>Astuce :</b> ${lessons[t].simple} Reprends le calcul lentement.</div>`;}}
-function startProblems(){pIndex=0;loadProblem();show("problems");}
-function loadProblem(){let p=problems[pIndex%problems.length];document.getElementById("problemTitle").textContent=`${pIndex+1}. ${p.title}`;document.getElementById("problemText").textContent=p.text;document.getElementById("problemResult").innerHTML="";document.getElementById("problemOps").innerHTML=Object.entries({add:"➕ Addition",sub:"➖ Soustraction",mul:"✖️ Multiplication",div:"➗ Division"}).map(([k,v])=>`<button class="op" onclick="chooseProblem('${k}')">${v}</button>`).join("");}
-function chooseProblem(op){let p=problems[pIndex%problems.length],r=document.getElementById("problemResult");if(op!==p.op){r.innerHTML=`<div class="error"><b>Pas tout à fait.</b> Relis la question : doit-on mettre ensemble, enlever, répéter ou partager ?</div>`;return;}r.innerHTML=`<div class="success"><b>Bravo !</b> Tu as trouvé l'opération.</div><div class="card"><h3>Étape 3 ✏️ Le calcul</h3><div class="big">${p.ex}</div><h3>Étape 4 🗣️ La réponse</h3><p><b>${p.answer.toLocaleString("fr-FR")}</b> est la réponse au problème.</p><h3>Étape 5 ✅ Je vérifie</h3><p>Je relis les nombres et je regarde si le résultat est logique.</p><button class="primary" onclick="nextProblem()">Problème suivant →</button></div>`;xp+=15;updateXP();}
-function nextProblem(){pIndex++;if(pIndex>=problems.length){document.getElementById("resultText").textContent=`Tu as terminé les ${problems.length} problèmes ! Tu as gagné des XP en utilisant la méthode étape par étape.`;show("results");}else loadProblem();}
-const quiz=[
-["12 + 7",19,["18","19","20"]],["35 − 18",17,["15","17","19"]],["6 × 7",42,["36","42","48"]],["72 ÷ 8",9,["8","9","10"]],["125 + 375",500,["450","500","550"]],["900 − 250",650,["550","650","750"]],["9 × 8",72,["64","72","81"]],["81 ÷ 9",9,["7","8","9"]],["1 250 + 750",2000,["1 500","2 000","2 250"]],["5 490 − 2 380",3110,["3 010","3 110","3 210"]]
-];
-function startQuiz(){quizIndex=0;quizScore=0;show("quiz");loadQuiz();}
-function loadQuiz(){let q=quiz[quizIndex];document.getElementById("quizCount").textContent=`Question ${quizIndex+1} / ${quiz.length}`;document.getElementById("quizQuestion").textContent=q[0]+" = ?";document.getElementById("quizAnswers").innerHTML=q[2].map(x=>`<button class="answer" onclick="answerQuiz(this,${Number(x.replace(" ",""))})">${x}</button>`).join("");document.getElementById("quizFeedback").innerHTML="";}
-function answerQuiz(btn,val){let q=quiz[quizIndex];document.querySelectorAll(".answer").forEach(b=>b.disabled=true);if(val===q[1]){btn.classList.add("correct");quizScore++;xp+=10;updateXP();document.getElementById("quizFeedback").innerHTML=`<div class="success">🎉 Exact ! ${q[0]} = ${q[1]}.</div>`;}else{btn.classList.add("wrong");document.getElementById("quizFeedback").innerHTML=`<div class="error">La bonne réponse est <b>${q[1]}</b>. Relis le calcul tranquillement.</div>`;}setTimeout(()=>{quizIndex++;if(quizIndex>=quiz.length){document.getElementById("resultText").textContent=`Défi terminé : ${quizScore} / ${quiz.length} bonnes réponses. Continue à t'entraîner !`;show("results");}else loadQuiz();},900);}
-updateXP();
-</script>
-</body>
-</html>
+let xp=+localStorage.mehdiXP||0,qi=0,pi=0,st=1;const q=[[2380,'−',3110,5490],[1650,'−',770,2420],[8,'×',200,25],[96,':',12,8],[1275,'+',2100,825]];
+const p=[{t:'De speelgoedwinkel bestelt eerst voor €2.380 aan speelgoed. De twee bestellingen kosten samen €5.490. Hoeveel kost de tweede bestelling?',n1:2380,n2:5490,op:'−',a:3110,s:'De tweede bestelling kost €3.110.',c:'2.380 + 3.110 = 5.490'},{t:'Op school zijn er eerst 1.650 kleurpotloden. Daarna zijn er 2.420. Hoeveel zijn erbij gekomen?',n1:1650,n2:2420,op:'−',a:770,s:'Er zijn 770 kleurpotloden bijgekomen.',c:'1.650 + 770 = 2.420'},{t:'Er zijn 8 dozen met telkens 25 schriften. Hoeveel schriften zijn er?',n1:8,n2:25,op:'×',a:200,s:'Er zijn 200 schriften.',c:'8 × 25 = 200'},{t:'Mehdi heeft 96 snoepjes en verdeelt ze over 8 kinderen. Hoeveel krijgt elk kind?',n1:96,n2:8,op:':',a:12,s:'Elk kind krijgt 12 snoepjes.',c:'12 × 8 = 96'}];
+function upd(){document.querySelector('#xp').textContent=xp;document.querySelector('#level').textContent=Math.floor(xp/100)+1;localStorage.mehdiXP=xp}function add(){xp+=10;upd()}upd();
+function hide(){document.querySelectorAll('main section').forEach(x=>x.classList.add('hidden'))}function home(){hide();home.id='home';document.querySelector('#home').classList.remove('hidden')}function learn(a,b){hide();document.querySelector('#learn').classList.remove('hidden');lt.textContent=a;lx.textContent=b}
+function practice(){hide();document.querySelector('#practice').classList.remove('hidden');let x=q[qi++%q.length];pq.textContent=x[0]+' '+x[1]+' '+x[3]+' = ?';pa.value='';pf.innerHTML='';pn.classList.add('hidden');window.ans=x[2]}function pc(){if(+pa.value===ans){add();pf.innerHTML='<div class="feedback good">✅ Goed gedaan!</div>';pn.classList.remove('hidden')}else pf.innerHTML='<div class="feedback bad">❌ Probeer opnieuw.</div>'}
+function problem(){hide();document.querySelector('#problem').classList.remove('hidden');pi%=p.length;st=1;render()}
+function render(){let x=p[pi],a=document.querySelector('#sa');pt.textContent=x.t;sn.textContent=st;sf.innerHTML='';if(st===1)a.innerHTML='<div class="step"><h3>1. Voor</h3><p>Welke getallen zijn belangrijk?</p><button class="choice" onclick="num('+x.n1+')">'+x.n1.toLocaleString('nl-BE')+'</button><button class="choice" onclick="num('+x.n2+')">'+x.n2.toLocaleString('nl-BE')+'</button></div>';if(st===2)a.innerHTML='<div class="step"><h3>2. Bewerking</h3><p>Welke bewerking gebruik je?</p>'+['+','−','×',':'].map(o=>'<button class="choice" onclick="op(&quot;'+o+'&quot;)">'+o+'</button>').join('')+'</div>';if(st===3)a.innerHTML='<div class="step"><h3>3. Antwoordzin</h3><p>Kies de juiste antwoordzin.</p><button class="choice" onclick="sent(1)">'+x.s+'</button><button class="choice" onclick="sent(0)">Het antwoord is '+x.a+'.</button></div>';if(st===4)a.innerHTML='<div class="step"><h3>4. Controleren</h3><p>Welke controle klopt?</p><button class="choice" onclick="check(1)">✅ '+x.c+'</button><button class="choice" onclick="check(0)">❌ Ik heb niet gecontroleerd.</button></div>'}
+function ok(m){add();sf.innerHTML='<div class="feedback good">✅ '+m+'</div>';setTimeout(()=>{st++;if(st<=4)render();else{sa.innerHTML='<div class="step"><h2>🎉 Vraagstuk klaar!</h2><p>Je hebt alle 4 stappen goed gedaan.</p><button class="good" onclick="pi++;problem()">Volgend vraagstuk →</button></div>';sf.innerHTML=''}},450)}
+function no(m){sf.innerHTML='<div class="feedback bad">❌ '+m+' Probeer opnieuw.</div>'}function num(n){let x=p[pi];n===x.n1||n===x.n2?ok('Goed!'):no('Kies un getal important.')}function op(o){o===p[pi].op?ok('Juiste bewerking!'):no('Kijk goed naar de vraag.')}function sent(v){v?ok('Goede antwoordzin!'):no('Kies de volledige antwoordzin.')}function check(v){v?ok('Goed gecontroleerd!'):no('Controleer je berekening.')}
+</script></body></html>

@@ -1,18 +1,8 @@
-LES MATHS DE MEHDI
-
-Version complète :
-- Explications simples pour addition, soustraction, multiplication et division
-- Exercices de calcul
-- Problèmes inspirés des feuilles de Mehdi, avec méthode en 5 étapes
-- Défi de 10 questions
-- XP, niveaux et progression
-- Compatible GitHub Pages
-- Aucun serveur nécessaire
-
-Pour GitHub Pages :
-1. Mettre index.html, manifest.json et README.txt à la racine du dépôt.
-2. Settings > Pages
-3. Source : Deploy from a branch
-4. Branch : main
-5. Folder : /(root)
-6. Save
+DE WISKUNDE VAN MEHDI – NEDERLANDSE VERSIE
+Alle oefeningen en vraagstukken zijn in het Nederlands.
+Vraagstukken verlopen verplicht in 4 stappen:
+1. Voor
+2. Bewerking
+3. Antwoordzin
+4. Controleren
+Plaats de 3 bestanden in de hoofdmap van GitHub Pages.
